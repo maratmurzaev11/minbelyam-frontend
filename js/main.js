@@ -3,7 +3,8 @@
 let vue = new Vue({
     el:"#vue-wrapper",
     data:{
-        router: !localStorage.getItem("route_state") ? "main" : localStorage.getItem("route_state"),
+        // router: !localStorage.getItem("route_state") ? "main" : localStorage.getItem("route_state"),
+        router: "courses_el",
         reg_login:"",
         reg_password:"",
         log_login:"",
