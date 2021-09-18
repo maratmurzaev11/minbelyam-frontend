@@ -11,6 +11,10 @@ button {
     transition: .5s;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 .container {
     max-width: 1300px;
     margin: auto;

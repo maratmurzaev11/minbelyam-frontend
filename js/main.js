@@ -3,12 +3,12 @@
 let vue = new Vue({
     el:"#vue-wrapper",
     data:{
-        // router: !localStorage.getItem("route_state") ? "main" : localStorage.getItem("route_state"),
-        router: "pers_acc",
+        router: !localStorage.getItem("route_state") ? "main" : localStorage.getItem("route_state"),
         reg_login:"",
         reg_password:"",
         log_login:"",
-        log_password:""
+        log_password:"",
+        url:"http://192.168.142.49:8000/"
     },
 
     methods:{
@@ -23,7 +23,7 @@ let vue = new Vue({
 
         do_reg(ev){
             ev.preventDefault()
-                fetch("http://192.168.128.49:8000/api/register",{
+                fetch(this.url+"api/register",{
                     method:"POST",
                     headers:{
                         "Content-Type":"application/json",
@@ -37,13 +37,14 @@ let vue = new Vue({
                     response.json().then(resp=>{
                         let token = resp.token
                         localStorage.setItem("token",token)
+                        this.update_router("user_courses")
                     })
                 })
             },
 
             do_log(ev){
                 ev.preventDefault()
-                fetch("http://192.168.128.49:8000/api/login",{
+                fetch(this.url+"api/login",{
                     method:"POST",
                     headers:{
                         "Content-Type":"application/json",
@@ -57,10 +58,17 @@ let vue = new Vue({
                     response.json().then(resp=>{
                         let token = resp.token
                         localStorage.setItem("token",token)
+                        this.update_router("user_courses")
                     })
                 })
+            },
+
+            update_router(route){
+                this.router = route
+                localStorage.setItem("route_state",route)
             }
     },
+
 
 
 });
