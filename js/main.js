@@ -4,7 +4,7 @@ let vue = new Vue({
     el:"#vue-wrapper",
     data:{
         // router: !localStorage.getItem("route_state") ? "main" : localStorage.getItem("route_state"),
-        router: "pers_acc",
+        router: "courses_el",
         reg_login:"",
         reg_password:"",
         log_login:"",
@@ -59,6 +59,11 @@ let vue = new Vue({
                         localStorage.setItem("token",token)
                     })
                 })
+            },
+
+            courses_el(){
+            this.router = "courses_el";
+                localStorage.setItem("route_state", "courses_el");
             }
     },
 

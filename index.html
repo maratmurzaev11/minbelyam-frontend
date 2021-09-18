@@ -185,7 +185,7 @@
                     <p style="color: #7C869D; font-size: 13px; ">Введите данные, чтобы войти</p>
                 </div>
                 <div class="reg_form_osn">
-                    <input type="text" name="email" placeholder="E-mail">
+                    <input type="email" name="email" placeholder="E-mail">
                     <input type="password" name="password" placeholder="Пароль">
                     <button id="" class="send_reg">Продолжить</button>
                 </div>
@@ -193,7 +193,7 @@
         </div>
     </div>
 
-    <div class="block" v-if="router=='pers_acc'">
+    <div class="block" v-if="router=='user_courses'">
         <div class="pers_acc_courses_page">
             <div class="pers_acc_inf">
                 <img class="pers_acc_logo" src="img/logo.png" alt="">
@@ -210,14 +210,7 @@
                         <img src="img/item_change.png" alt="">
                         <h3>Обмен баллов</h3>
                     </li>
-                    <!--                <li class="pers_acc_li">-->
-                    <!--                    <img src="" alt="">-->
-                    <!--                    <p>Разработка тестов</p>-->
-                    <!--                </li>-->
-                    <!--                <li class="pers_acc_li">-->
-                    <!--                    <img src="" alt="">-->
-                    <!--                    <p>Администрирование</p>-->
-                    <!--                </li>-->
+
                 </nav>
 
             </div>
@@ -244,6 +237,93 @@
             </div>
         </div>
     </div>
+
+    <div class="block" v-if="router=='courses_el'">
+        <div class="pers_acc_courses_page">
+            <div class="pers_acc_inf">
+                <img class="pers_acc_logo" src="img/logo.png" alt="">
+                <nav class="pers_acc_nav">
+                    <li class="pers_acc_li">
+                        <img src="img/settings.png" alt="">
+                        <h3>Мои данные</h3>
+                    </li>
+                    <li class="pers_acc_li">
+                        <img src="img/my_courses.png" alt="">
+                        <h3>Мои курсы</h3>
+                    </li>
+                    <li class="pers_acc_li">
+                        <img src="img/item_change.png" alt="">
+                        <h3>Обмен баллов</h3>
+                    </li>
+                </nav>
+
+            </div>
+            <div class="pers_acc_courses">
+                <div class="pers_acc_name">
+                    <h1>Курс 1</h1>
+                    <div class="pers_acc_data">
+                        <div class="email">maratmurzaev11@mail.ru</div>
+                        <img src="img/profile_icon.png" alt="">
+                    </div>
+                </div>
+                <div class="courses_el">
+                    <div class="courses_el_osn_task">
+                        <video src="video/video_course_1.mp4"></video>
+                        <h1>Изучение новых слов</h1>
+                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+                            essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                            and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                        <button class="next_question">
+                            Следующий вопрос
+                        </button>
+                    </div>
+                    <div class="courses_el_nav">
+                        <h2>Курс номер 1</h2>
+                        <h1>0%</h1>
+                        <nav>
+                            <li>
+                                <img src="img/checkpoint.png" alt="">
+                                Занятие 1
+                            </li>
+                            <li>
+                                <img src="img/checkpoint.png" alt="">
+                                Занятие 2
+                            </li>
+                            <li>
+                                <img src="img/checkpoint.png" alt="">
+                                Занятие 3
+                            </li>
+                            <li>
+                                <img src="img/checkpoint.png" alt="">
+                                Занятие 4
+                            </li>
+                            <li>
+                                <img src="img/checkpoint.png" alt="">
+                                Занятие 5
+                            </li>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!--    <div class="block" v-if="router=='courses_el'">-->
+<!--        <form class="add_course" v-on:submit.prevent="do_add_course" action="">-->
+<!--            <input type="text" name="course_name" placeholder="Название курса">-->
+<!--            <input type="password" name="course_desc" placeholder="Описание курса">-->
+<!--            <button name="do_add_course">Добавить курс</button>-->
+<!--            <form class="add_section" v-on:submit.prevent="do_add_section" action="">-->
+<!--                <input type="text" name="task_name" placeholder="Название курса">-->
+<!--                <input type="password" name="task_desc" placeholder="Описание курса">-->
+<!--                <button name="do_add_section">Добавить курс</button>-->
+
+<!--            </form>-->
+<!--        </form>-->
+<!--    </div>-->
 
 </div>
 
