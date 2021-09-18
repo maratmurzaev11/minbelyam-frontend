@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>МИНБЕЛӘМ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/vue.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/reg.js" defer></script>
+    <link rel="shortcut icon" href="img/icon.png">
+</head>
+<body>
+<div id="vue-wrapper">
+    <div class="block" v-if="router==='main'">
+        <div class="wrapper">
+            <div class="intro">
+                <div class="intro_name">
+                    <h1>мин<span style="color: green;">беләм</span></h1>
+                </div>
+                <div class="intro_osn">
+                    <div class="intro_desc">
+                        <h1>Татарский язык без ограничений</h1>
+                        <p>Забудьте про дополнительную плату за второй, третий и четвёртый предмет единая подписка на всё!</p>
+                        <div class="intro_pay">
+                            <button class="intro_button_free" v-on:click="registration">Начать обучение</button>
+                            <button class="intro_button_pay">Оплатить обучение</button>
+                        </div>
+                    </div>
+                    <div class="intro_img">
+                        <img src="img/index_intro.png" alt="">
+                    </div>
+                </div>
+
+                <div class="why_us_block">
+                    <div class="container">
+                        <div class="why_us">
+                            <h1>Почему именно мы?</h1>
+                            <p>Узнай про наши преимущества!</p>
+                            <div class="why_us_el">
+                                <div class="why_us_el1">
+                                    <div class="why_us_img">
+                                        <img src="img/why_us_geo.png" alt="">
+                                    </div>
+                                    <h4>Город Казань</h4>
+                                </div>
+                                <div class="why_us_el2">
+                                    <div class="why_us_img">
+                                        <img src="img/why_us_clock.png" alt="">
+                                    </div>
+                                    <h4>Нет ограничений</h4>
+
+                                </div>
+                                <div class="why_us_el3">
+                                    <div class="why_us_img">
+                                        <img src="img/why_us_dollar.png" alt="">
+                                    </div>
+                                    <h4>Максимально доступно</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="intro_osn">
+                    <div class="intro_img">
+                        <img src="img/index_inf1.png" alt="">
+                    </div>
+                    <div class="intro_desc">
+                        <h1>Все занятия проходят онлайн</h1>
+                        <p>Мы проводим 12 вебинаров в месяц, если вы готовитесь к ЕГЭ, и 8 вебинаров, если вы готовитесь к ЕГЭ</p>
+                        <div class="intro_pay">
+                            <button class="intro_button_free">Начать бесплатно</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="intro_osn" style="margin-top: 120px;">
+                    <div class="intro_desc">
+                        <h1>Уникальная кросс-платформа</h1>
+                        <p>Здесь есть все для вашего удобства: записи занятий, домашние занятия, разборы, дополнительные варианты.</p>
+                        <div class="intro_pay">
+                            <button class="intro_button_free">Начать бесплатно</button>
+                        </div>
+                    </div>
+                    <div class="intro_img intro_inf2">
+                        <img src="img/index_inf2.png" alt="">
+                    </div>
+
+                </div>
+
+                <div class="index_reviews_block">
+                    <div class="container">
+                        <div class="index_reviews">
+                            <div class="index_review_desc">
+                                <h1>Просто посмотри на эмоции наших учеников</h1>
+                            </div>
+                            <div class="index_reviews_osn">
+                                <img src="img/index_reviews.png" alt="">
+                                <div class="index_reviews_el">
+                                    <h3>"Рекоммендую!"</h3>
+                                    <p>Начал заниматься в мастер группе с Артуром с декабря. За это время очень
+                                        сильно подтянул свои знания по математике, за экзамен получил 94 балла.
+                                        Занятия проходят очень легко и интересно!</p>
+                                    <h5>Кирилл Матанов</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="index_buy_block">
+                    <div class="container">
+                        <div class="index_buy">
+                            <div class="index_buy_form">
+                                <h1>Получи бесплатный базовый курс</h1>
+                                <p>Кликни и получи доступ к первым бесплатным знаниям</p>
+                                <button class="intro_button_free">Начать обучение</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--    <div class="footer_block">-->
+                <!--        <div class="container">-->
+                <!--            <div class="footer">-->
+                <!--                <h1>минбелэм</h1>-->
+                <!--                <div class="footer_el1">-->
+                <!--                    -->
+                <!--                </div>-->
+                <!--                <div class="footer_el2">-->
+
+                <!--                </div>-->
+                <!--            </div>-->
+                <!--        </div>-->
+                <!--    </div>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="block"  v-if="router==='reg'">
+        <div class="reg_win">
+            <form id="reg_form" class="reg_form" action="" v-on:submit.prevent="do_reg">
+                <img src="img/logo.png" alt="">
+                <div class="reg_form_inf">
+                    <p>Добро пожаловать!</p>
+                    <p style="color: #7C869D; font-size: 13px; ">Зарегистрируйтесь, чтобы продолжить</p>
+                </div>
+                <div class="reg_form_osn">
+                    <input type="text" v-model="reg_login" name="email" placeholder="E-mail">
+                    <input type="password" v-model="reg_password" name="password" placeholder="Пароль">
+                    <button id="do_reg" class="send_reg">Зарегистрироваться</button>
+                    <p style="color: #728196;">Уже зарегистрированы? <button v-on:click="auth" style=" background: none; border: none; color: green; font-size: 15px;">Войти</button></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="block"  v-if="router==='auth'">
+        <div class="reg_win">
+            <form class="reg_form" v-on:submit.prevent="do_log" action="">
+                <img src="img/logo.png" alt="">
+                <!--        <h1>МИН<span style="color: green;">БЕЛӘМ</span></h1>-->
+                <div class="reg_form_inf">
+                    <p>С возвращением!</p>
+                    <p style="color: #7C869D; font-size: 13px; ">Введите данные, чтобы войти</p>
+                </div>
+                <div class="reg_form_osn">
+                    <input type="text" v-model="log_login" name="email" placeholder="E-mail">
+                    <input type="password" v-model="log_password" name="password" placeholder="Пароль">
+                    <button id="do_log"  class="send_reg">Продолжить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="block"  v-if="router==='auth'">
+        <div class="reg_win">
+            <form class="reg_form" action="">
+                <img src="img/logo.png" alt="">
+                <!--        <h1>МИН<span style="color: green;">БЕЛӘМ</span></h1>-->
+                <div class="reg_form_inf">
+                    <p>С возвращением!</p>
+                    <p style="color: #7C869D; font-size: 13px; ">Введите данные, чтобы войти</p>
+                </div>
+                <div class="reg_form_osn">
+                    <input type="text" name="email" placeholder="E-mail">
+                    <input type="password" name="password" placeholder="Пароль">
+                    <button id="" class="send_reg">Продолжить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="block" v-if="router=='pers_acc'">
+        <div class="pers_acc_courses_page">
+            <div class="pers_acc_inf">
+                <img class="pers_acc_logo" src="img/logo.png" alt="">
+                <nav class="pers_acc_nav">
+                    <li class="pers_acc_li">
+                        <img src="img/settings.png" alt="">
+                        <h3>Мои данные</h3>
+                    </li>
+                    <li class="pers_acc_li">
+                        <img src="img/my_courses.png" alt="">
+                        <h3>Мои курсы</h3>
+                    </li>
+                    <li class="pers_acc_li">
+                        <img src="img/item_change.png" alt="">
+                        <h3>Обмен баллов</h3>
+                    </li>
+                    <!--                <li class="pers_acc_li">-->
+                    <!--                    <img src="" alt="">-->
+                    <!--                    <p>Разработка тестов</p>-->
+                    <!--                </li>-->
+                    <!--                <li class="pers_acc_li">-->
+                    <!--                    <img src="" alt="">-->
+                    <!--                    <p>Администрирование</p>-->
+                    <!--                </li>-->
+                </nav>
+
+            </div>
+            <div class="pers_acc_courses">
+                <div class="pers_acc_name">
+                    <h1>Мои курсы</h1>
+                    <div class="pers_acc_data">
+                        <div class="email">maratmurzaev11@mail.ru</div>
+                        <img src="img/profile_icon.png" alt="">
+                    </div>
+                </div>
+                <div class="pers_acc_courses_osn">
+                    <div class="pers_acc_courses_osn_el">
+                        <h3>Курс номер 1</h3>
+                        <h2>15%</h2>
+                        <button>Приступить</button>
+                    </div>
+                    <div class="pers_acc_courses_osn_el">
+                        <h3>Курс номер 1</h3>
+                        <h2>15%</h2>
+                        <button>Приступить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
