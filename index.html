@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/vue.js" defer></script>
     <script src="js/main.js" defer></script>
+    <script src="js/reg.js" defer></script>
     <link rel="shortcut icon" href="img/icon.png">
 </head>
 <body>
@@ -150,7 +151,7 @@
                     <input type="text" v-model="reg_login" name="email" placeholder="E-mail">
                     <input type="password" v-model="reg_password" name="password" placeholder="Пароль">
                     <button id="do_reg" class="send_reg">Зарегистрироваться</button>
-                    <p style="color: #728196;">Уже зарегистрированы? <button v-on:click="auth" class="pointer" style=" background: none; border: none; color: green; font-size: 15px;">Войти</button></p>
+                    <p style="color: #728196;">Уже зарегистрированы? <button v-on:click="auth" style=" background: none; border: none; color: green; font-size: 15px;">Войти</button></p>
                 </div>
             </form>
         </div>
@@ -192,7 +193,7 @@
         </div>
     </div>
 
-    <div class="block" v-if="router==='user_courses' ">
+    <div class="block" v-if="router=='pers_acc'">
         <div class="pers_acc_courses_page">
             <div class="pers_acc_inf">
                 <img class="pers_acc_logo" src="img/logo.png" alt="">
@@ -209,6 +210,14 @@
                         <img src="img/item_change.png" alt="">
                         <h3>Обмен баллов</h3>
                     </li>
+                    <!--                <li class="pers_acc_li">-->
+                    <!--                    <img src="" alt="">-->
+                    <!--                    <p>Разработка тестов</p>-->
+                    <!--                </li>-->
+                    <!--                <li class="pers_acc_li">-->
+                    <!--                    <img src="" alt="">-->
+                    <!--                    <p>Администрирование</p>-->
+                    <!--                </li>-->
                 </nav>
 
             </div>

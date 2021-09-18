@@ -10,13 +10,15 @@
     src: url('../fonts/TTNorms-Bold.eot');
     src: url('../fonts/TTNorms-Bold.eot?#iefix') format('embedded-opentype'),
     url('../fonts/TTNorms-Bold.ttf') format('truetype');
+    font-weight: 500;
 }
 
 @font-face {
-    font-family: 'TTNorms-Regular';
+    font-family: 'TTNorms';
     src: url('../fonts/TTNorms-Regular.eot');
     src: url('../fonts/TTNorms-Regular.eot?#iefix') format('embedded-opentype'),
     url('../fonts/TTNorms-Regular.ttf') format('truetype');
+    font-weight: 400;
 }
 
 @font-face {

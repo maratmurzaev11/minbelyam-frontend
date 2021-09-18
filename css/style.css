@@ -356,33 +356,35 @@ li { white-space: nowrap; }
 }
 
 .pers_acc_name img {
-    width: 30px;
+    width: 35px;
     margin-left: 30px;
 }
 
 .pers_acc_data {
     display: flex;
     align-items: center;
+    font-size: 22px;
 }
 
 
 .pers_acc_courses_osn {
-    margin-top: 100px;
+    margin-top: 70px;
     display: flex;
 }
 
 .pers_acc_courses_osn_el {
     flex-direction: column;
-    border-radius: 5px;
-    border: #C7C7C7 solid 2px;
+    border-radius: 8px;
+    border: #DFE0EB solid 2px;
     margin-right: 30px;
-    padding: 10px 30px;
+    padding: 20px 130px 20px 30px;
     color: #9FA2B4;
 }
 
 .pers_acc_courses_osn_el h2 {
     color: #000000;
     margin: 15px 0;
+    font-size: 40px;
 }
 .pers_acc_courses_osn_el button {
     font-family: "TTNorms-Medium", sans-serif;
@@ -390,5 +392,69 @@ li { white-space: nowrap; }
     border-radius: 90px;
     border: none;
     background: green;
+    padding: 8px 20px;
+}
+
+.courses_el {
+    display: flex;
+}
+
+.courses_el_osn_task {
+    padding: 50px 0;
+    width: 800px;
+}
+
+.courses_el_osn_task video {
+    width: 800px;
+    margin-bottom: 30px;
+
+}
+
+.courses_el_osn_task p {
+    color: #9FA2B4;
+    margin-top: 20px;
+}
+
+.next_question {
+    margin-top: 20px;
     padding: 10px 15px;
+    background: #079911;
+    border: none;
+    color: #FFFFFF;
+    border-radius: 90px;
+    font-size: 18px;
+    font-family: "TTNorms-Medium", sans-serif;
+}
+
+.courses_el_nav {
+    margin-top: 50px;
+    margin-left: 30px;
+    border-radius: 10px;
+    border: solid 2px #DFE0EB;
+    padding: 20px 32px;
+}
+
+.courses_el_nav h2 {
+    color: #9FA2B4;
+    margin-bottom: 20px;
+}
+
+.courses_el_nav h1 {
+    margin-bottom: 30px;
+}
+
+.courses_el_nav nav {
+    width: 100%;
+    border-top: #DFE0EB solid 2px;
+    padding-top: 50px;
+}
+
+.courses_el_nav li {
+    font-family: "TTNorms-Medium", sans-serif;
+    display: flex;
+    margin-bottom: 15px;
+}
+.courses_el_nav li img {
+    width: 20px;
+    margin-right: 20px;
 }
