@@ -1,3 +1,6 @@
+<!--v-if="router=='edit_profile' || router=='all_courses' || router=='pers_acc' "-->
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -23,7 +26,7 @@
                         <h1>Татарский язык без ограничений</h1>
                         <p>Забудьте про дополнительную плату за второй, третий и четвёртый предмет единая подписка на всё!</p>
                         <div class="intro_pay">
-                            <button class="intro_button_free" v-on:click="registration">Начать обучение</button>
+                            <button class="intro_button_free" v-on:click="reg">Начать обучение</button>
                             <button class="intro_button_pay">Оплатить обучение</button>
                         </div>
                     </div>
@@ -108,7 +111,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="index_buy_block">
                     <div class="container">
                         <div class="index_buy">
@@ -120,21 +122,6 @@
                         </div>
                     </div>
                 </div>
-
-
-                <!--    <div class="footer_block">-->
-                <!--        <div class="container">-->
-                <!--            <div class="footer">-->
-                <!--                <h1>минбелэм</h1>-->
-                <!--                <div class="footer_el1">-->
-                <!--                    -->
-                <!--                </div>-->
-                <!--                <div class="footer_el2">-->
-
-                <!--                </div>-->
-                <!--            </div>-->
-                <!--        </div>-->
-                <!--    </div>-->
             </div>
         </div>
     </div>
@@ -157,11 +144,10 @@
         </div>
     </div>
 
-    <div class="block"  v-if="router==='auth'">
+    <div class="block" v-if="router==='auth'">
         <div class="reg_win">
             <form class="reg_form" v-on:submit.prevent="do_log" action="">
                 <img src="img/logo.png" alt="">
-                <!--        <h1>МИН<span style="color: green;">БЕЛӘМ</span></h1>-->
                 <div class="reg_form_inf">
                     <p>С возвращением!</p>
                     <p style="color: #7C869D; font-size: 13px; ">Введите данные, чтобы войти</p>
@@ -175,51 +161,30 @@
         </div>
     </div>
 
-    <div class="block"  v-if="router==='auth'">
-        <div class="reg_win">
-            <form class="reg_form" action="">
-                <img src="img/logo.png" alt="">
-                <!--        <h1>МИН<span style="color: green;">БЕЛӘМ</span></h1>-->
-                <div class="reg_form_inf">
-                    <p>С возвращением!</p>
-                    <p style="color: #7C869D; font-size: 13px; ">Введите данные, чтобы войти</p>
-                </div>
-                <div class="reg_form_osn">
-                    <input type="text" name="email" placeholder="E-mail">
-                    <input type="password" name="password" placeholder="Пароль">
-                    <button id="" class="send_reg">Продолжить</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div class="block" v-if="router=='pers_acc'">
+    <div class="block" v-if="router==='edit_profile' || router==='all_courses' || router==='pers_acc' || router==='courses_el'">
         <div class="pers_acc_courses_page">
             <div class="pers_acc_inf">
                 <img class="pers_acc_logo" src="img/logo.png" alt="">
                 <nav class="pers_acc_nav">
-                    <li class="pers_acc_li">
+                    <button v-on:click="go_to_page1" style="background: none; border: none;"><li class="pers_acc_li">
                         <img src="img/settings.png" alt="">
                         <h3>Мои данные</h3>
                     </li>
-                    <li class="pers_acc_li">
+                    </button>
+                    <button v-on:click="go_to_page2" style="background: none; border: none;"><li class="pers_acc_li">
                         <img src="img/my_courses.png" alt="">
                         <h3>Мои курсы</h3>
                     </li>
-                    <li class="pers_acc_li">
+                    </button>
+                    <button v-on:click="go_to_page3" style="background: none; border: none;"><li class="pers_acc_li">
                         <img src="img/item_change.png" alt="">
                         <h3>Обмен баллов</h3>
-                    </li>
-                    <!--                <li class="pers_acc_li">-->
-                    <!--                    <img src="" alt="">-->
-                    <!--                    <p>Разработка тестов</p>-->
-                    <!--                </li>-->
-                    <!--                <li class="pers_acc_li">-->
-                    <!--                    <img src="" alt="">-->
-                    <!--                    <p>Администрирование</p>-->
-                    <!--                </li>-->
+                    </li></button>
+                    <button v-on:click="go_to_page4" style="background: none; border: none;"><li class="pers_acc_li">
+                        <img src="img/my_courses.png" alt="">
+                        <h3>Купить курсы</h3>
+                    </li></button>
                 </nav>
-
             </div>
             <div class="pers_acc_courses">
                 <div class="pers_acc_name">
@@ -229,16 +194,90 @@
                         <img src="img/profile_icon.png" alt="">
                     </div>
                 </div>
-                <div class="pers_acc_courses_osn">
-                    <div class="pers_acc_courses_osn_el">
-                        <h3>Курс номер 1</h3>
-                        <h2>15%</h2>
-                        <button>Приступить</button>
+
+                <div v-if="router=='pers_acc'" class="pers_acc_courses_osn" >
+
+                    <div v-for="course in courses" class="pers_acc_courses_osn_el">
+                        <h3>{{course.name}}</h3>
+                        <h2>{{(course.sections.filter(el=>el.passed).length / course.sections.length) *100 +'%' }}</h2>
+                        <button v-on:click="open_course(course.id)">Приступить</button>
                     </div>
-                    <div class="pers_acc_courses_osn_el">
-                        <h3>Курс номер 1</h3>
-                        <h2>15%</h2>
-                        <button>Приступить</button>
+                </div>
+
+                <div class="profile_edit" v-if="router==='edit_profile'">
+                    <form class="profile_date">
+                        <div class="profile_input">
+                            <input id="edit_user_photo" type="file">
+                            <label for="edit_user_photo"><img src="img/profile_icon.png" alt=""></label>
+                        </div>
+                        <div class="profile_input">
+                            <label for="edit_user_name">Имя</label>
+                            <input id="edit_user_name" value="" placeholder="Иван" type="text">
+                        </div>
+                        <div class="profile_input">
+                            <label for="edit_user_surname">Фамилия</label>
+                            <input id="edit_user_surname" value="" placeholder="Иванов" type="text">
+                        </div>
+                        <div class="profile_input">
+                            <label for="edit_user_email">E-mail</label>
+                            <input id="edit_user_email" type="email" value="" readonly>
+                        </div>
+                        <button>Сохранить</button>
+                    </form>
+
+                    <div class="user_courses">
+                        <div v-for="course in courses" class="pers_acc_courses_osn_el">
+                            <div v-for="section in course.sections">
+                                <h3>{{course.name}}</h3>
+                                <h2>{{(course.sections.filter(el=>el.passed).length / course.sections.length) *100 +'%' }}</h2>
+                                <button v-on:click="open_course(course.id)">Приступить</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user_balance">
+                        <div class="user_balance_inf">
+                            <h3 style="white-space: nowrap">Мой баланс</h3>
+                            <h2>15000&#10022;</h2>
+                        </div>
+                        <div class="user_balance_change">
+                            <button>Обмен</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="courses_el" v-if="router==='courses_el'">
+                    <div class="courses_el_osn_task" v-if="opened_section">
+                        <video ></video>
+                        <h1>{{opened_section.name}}</h1>
+                        <p>{{opened_section.description}}</p>
+                        <button class="next_question">Перейти к вопросам</button>
+                    </div>
+                    <div class="courses_el_nav">
+                        <h2>Курс номер 1</h2>
+                        <h1>0%</h1>
+                        <nav>
+                            <li v-for="section in course.sections"><img src="img/checkpoint.png" alt="">{{section.name}}</li>
+                        </nav>
+                    </div>
+                </div>
+
+
+                <div class="all_courses_inf" v-if="router==='all_courses'">
+                    <div class="all_courses">
+                        <h3>Акция, акция, акция</h3>
+                        <p style="color: #9FA2B4; border: none; width: 85%; font-size: 15px">Только сегодня при покупке одного курса второй вы получаете в подарок</p>
+                        <p>Курс номер 1</p>
+                        <p>Курс номер 2</p>
+                        <p>Курс номер 3</p>
+                        <p>Курс номер 4</p>
+                        <p>Курс номер 5</p>
+                    </div>
+                    <div class="course_cost">
+                        <h3>Итоговая стоимость</h3>
+                        <h2>6000&#10022;</h2>
+                        <button>Оплатить</button>
                     </div>
                 </div>
             </div>
@@ -246,77 +285,7 @@
     </div>
 
 
-    <div class="block" v-if="router==='courses_el'">
-        <div class="pers_acc_courses_page">
-            <div class="pers_acc_inf">
-                <img class="pers_acc_logo" src="img/logo.png" alt="">
-                <nav class="pers_acc_nav">
-                    <li class="pers_acc_li">
-                        <img src="img/settings.png" alt="">
-                        <h3>Мои данные</h3>
-                    </li>
-                    <li class="pers_acc_li">
-                        <img src="img/my_courses.png" alt="">
-                        <h3>Мои курсы</h3>
-                    </li>
-                    <li class="pers_acc_li">
-                        <img src="img/item_change.png" alt="">
-                        <h3>Обмен баллов</h3>
-                    </li>
-                </nav>
 
-            </div>
-            <div class="pers_acc_courses">
-                <div class="pers_acc_name">
-                    <h1>Курс 1</h1>
-                    <div class="pers_acc_data">
-                        <div class="email">maratmurzaev11@mail.ru</div>
-                        <img src="img/profile_icon.png" alt="">
-                    </div>
-                </div>
-                <div class="courses_el">
-                    <div class="courses_el_osn_task">
-                        <video src="video/video_course_1.mp4"></video>
-                        <h1>Изучение новых слов</h1>
-                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                            It has survived not only five centuries, but also the leap into electronic typesetting, remaining
-                            essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                            and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        <button class="next_question">
-                            Следующий вопрос
-                        </button>
-                    </div>
-                    <div class="courses_el_nav">
-                        <h2>Курс номер 1</h2>
-                        <h1>0%</h1>
-                        <nav>
-                            <li>
-                                <img src="img/checkpoint.png" alt="">
-                                Занятие 1
-                            </li>
-                            <li>
-                                <img src="img/checkpoint.png" alt="">
-                                Занятие 2
-                            </li>
-                            <li>
-                                <img src="img/checkpoint.png" alt="">
-                                Занятие 3
-                            </li>
-                            <li>
-                                <img src="img/checkpoint.png" alt="">
-                                Занятие 4
-                            </li>
-                            <li>
-                                <img src="img/checkpoint.png" alt="">
-                                Занятие 5
-                            </li>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-</div>
 
 
 
@@ -401,133 +370,6 @@
         </div>
     </div>
 
-
-    <div class="block" v-if="router=='edit_profile'">
-        <div class="pers_acc_courses_page">
-            <div class="pers_acc_inf">
-                <img class="pers_acc_logo" src="img/logo.png" alt="">
-                <nav class="pers_acc_nav">
-                    <li class="pers_acc_li">
-                        <img src="img/settings.png" alt="">
-                        <h3>Мои данные</h3>
-                    </li>
-                    <li class="pers_acc_li">
-                        <img src="img/my_courses.png" alt="">
-                        <h3>Мои курсы</h3>
-                    </li>
-                    <li class="pers_acc_li">
-                        <img src="img/item_change.png" alt="">
-                        <h3>Обмен баллов</h3>
-                    </li>
-                    <!--                <li class="pers_acc_li">-->
-                    <!--                    <img src="" alt="">-->
-                    <!--                    <p>Разработка тестов</p>-->
-                    <!--                </li>-->
-                    <!--                <li class="pers_acc_li">-->
-                    <!--                    <img src="" alt="">-->
-                    <!--                    <p>Администрирование</p>-->
-                    <!--                </li>-->
-                </nav>
-
-            </div>
-            <div class="edit_profile">
-                <div class="pers_acc_name">
-                    <h1>Мои данные</h1>
-                    <div class="pers_acc_data">
-                        <div class="email">maratmurzaev11@mail.ru</div>
-                        <img src="img/profile_icon.png" alt="">
-                    </div>
-                </div>
-
-                <form class="profile_date">
-                    <div class="profile_input">
-                        <input id="edit_user_photo" type="file">
-                        <label for="edit_user_photo"><img src="img/profile_icon.png" alt=""></label>
-                    </div>
-                    <div class="profile_input">
-                        <label for="edit_user_name">Имя</label>
-                        <input id="edit_user_name" value="" placeholder="Иван" type="text">
-                    </div>
-                    <div class="profile_input">
-                        <label for="edit_user_surname">Фамилия</label>
-                        <input id="edit_user_surname" value="" placeholder="Иванов" type="text">
-                    </div>
-                    <div class="profile_input">
-                        <label for="edit_user_email">E-mail</label>
-                        <input id="edit_user_email" type="email" value="" readonly>
-                    </div>
-                    <button>Сохранить</button>
-                </form>
-
-                <div class="user_courses">
-                    <div class="user_courses_osn_el">
-                        <h3>Курс номер 1</h3>
-                        <h2>15%</h2>
-                        <button>Приступить</button>
-                    </div>
-                </div>
-
-                <div class="user_balance">
-                    <div class="user_balance_inf">
-                        <h3 style="white-space: nowrap">Мой баланс</h3>
-                        <h2>15%</h2>
-                    </div>
-                    <div class="user_balance_change">
-                        <button>Обмен</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="block" v-if="router=='all_courses'">
-        <div class="pers_acc_courses_page">
-            <div class="pers_acc_inf">
-                <img class="pers_acc_logo" src="img/logo.png" alt="">
-                <nav class="pers_acc_nav">
-                    <li class="pers_acc_li">
-                        <img src="img/settings.png" alt="">
-                        <h3>Мои данные</h3>
-                    </li>
-                    <li class="pers_acc_li">
-                        <img src="img/my_courses.png" alt="">
-                        <h3>Мои курсы</h3>
-                    </li>
-                    <li class="pers_acc_li">
-                        <img src="img/item_change.png" alt="">
-                        <h3>Обмен баллов</h3>
-                    </li>
-                </nav>
-
-            </div>
-            <div class="pers_acc_courses">
-                <div class="pers_acc_name">
-                    <h1>Все курсы</h1>
-                    <div class="pers_acc_data">
-                        <div class="email">maratmurzaev11@mail.ru</div>
-                        <img src="img/profile_icon.png" alt="">
-                    </div>
-                </div>
-                <div class="all_courses_inf">
-                    <div class="all_courses">
-                        <h3>Акция, акция, акция</h3>
-                        <p style="color: #9FA2B4; border: none; width: 85%; font-size: 15px">Только сегодня при покупке одного курса второй вы получаете в подарок</p>
-                        <p>Курс номер 1</p>
-                        <p>Курс номер 2</p>
-                        <p>Курс номер 3</p>
-                        <p>Курс номер 4</p>
-                        <p>Курс номер 5</p>
-                    </div>
-                    <div class="course_cost">
-                        <h3>Итоговая стоимость</h3>
-                        <h2>6000Р</h2>
-                        <button>Оплатить</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
         <div class="block" v-if="router=='add_course'">

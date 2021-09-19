@@ -1,47 +1,33 @@
 'use strict';
 
 
-
-
 let vue = new Vue({
     el: "#vue-wrapper",
     data: {
-        // router: !localStorage.getItem("route_state") ? "main" : localStorage.getItem("route_state"),
-        router: "all_courses",
+        router: !localStorage.getItem("route_state") ? "main" : localStorage.getItem("route_state"),
+        // router: "main",
         reg_login: "",
         reg_password: "",
         log_login: "",
         log_password: "",
-        url: "http://192.168.142.49:8000/",
-        section_wrapper:""
+        url: "http://192.168.93.49:8000/",
+        section_wrapper: "",
+        token: !localStorage.getItem("token") ? undefined : localStorage.getItem("token"),
+        courses: [],
+        course:null,
+        opened_section:null,
+        user: !localStorage.getItem("user") ? "guest" : JSON.parse(localStorage.getItem("user")),
     },
-
     methods: {
-        registration() {
-            this.router = "reg";
-            localStorage.setItem("route_state", "reg");
-        },
+
 
         auth() {
-            this.router = "auth"
+            this.update_router("auth")
         },
 
-        // add_section(){
-        //     let el = new DOMParser().parseFromString(" <div class='wp'><input type=\"text\" name=\"task_name\" placeholder=\"Название секции\">" +
-        //         "        <input type=\"text\" name=\"task_desc\" placeholder=\"Описание секции\">" +
-        //         "        <input type=\"file\" placeholder=\"Добавить видео\"><button name=\"do_add_task\" v-on:click.native=\"add_task\">Добавить задание</button></div>" ,"text/html").body.querySelector(".wp")
-        //   this.$refs["add_section_wrap"].appendChild(el)
-        // },
-        //
-        // add_task(){
-        //     let el = new DOMParser().parseFromString(" <div class='add_task' ref='add_task_wrap'> <input type=\"text\" name=\"task_name\" placeholder=\"Название задания\">\n" +
-        //         "                        <input type=\"checkbox\" placeholder=\"Добавить ответ\"></div>" ,"text/html").body.querySelector(".add_task")
-        //     this.$refs["add_task_wrap"].appendChild(el)
-        // },
-        //
-        // do_add_course(){
-        //
-        // },
+        reg() {
+            this.router = "reg"
+        },
 
         do_reg(ev) {
             ev.preventDefault()
@@ -49,6 +35,8 @@ let vue = new Vue({
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "Accept": "application/json",
+
                 },
                 body: JSON.stringify({
                         email: this.reg_login,
@@ -57,9 +45,12 @@ let vue = new Vue({
                 )
             }).then(response => {
                 response.json().then(resp => {
-                    let token = resp.token
-                    localStorage.setItem("token", token)
-                    this.update_router("user_courses")
+                    this.token = resp.token
+                    this.user = resp.user
+                    localStorage.setItem("user", JSON.stringify(this.user))
+                    localStorage.setItem("token", this.token)
+                    this.get_courses()
+                    this.update_router("edit_profile")
                 })
             })
         },
@@ -70,6 +61,8 @@ let vue = new Vue({
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "Accept": "application/json",
+
                 },
                 body: JSON.stringify({
                         email: this.log_login,
@@ -78,45 +71,84 @@ let vue = new Vue({
                 )
             }).then(response => {
                 response.json().then(resp => {
-                    let token = resp.token
-                    localStorage.setItem("token", token)
-                    this.update_router("user_courses")
+                    this.token = resp.token
+                    this.user = resp.user
+                    localStorage.setItem("user", JSON.stringify(this.user))
+                    localStorage.setItem("token", this.token)
+                    this.get_courses()
+                    this.update_router("edit_profile")
                 })
             })
         },
-        // add_course(ev){
-        //
-        //     ev.preventDefault()
-        //     fetch(this.url+"api/register",{
-        //         method:"POST",
-        //         headers:{
-        //             "Content-Type":"application/json",
-        //         },
-        //         body:JSON.stringify({
-        //                 email:this.reg_login,
-        //                 password:this.reg_password
-        //             }
-        //         )
-        //     }).then(response=> {
-        //         response.json().then(resp=>{
-        //             let token = resp.token
-        //             localStorage.setItem("token",token)
-        //             this.update_router("user_courses")
-        //         })
-        //     })
-        // },
 
-        // do_add_task() {
-        //   if ()
-        // },
+        get_courses() {
+            fetch(this.url + "api/courses", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + this.token,
+                    "Accept": "application/json",
+
+                },
+            }).then(response => {
+                response.json().then(resp => {
+                    this.courses = resp.courses
+                })
+            })
+        },
+
+        update_user() {
+            fetch(this.url + "api/user", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + this.token,
+                    "Accept": "application/json",
+
+                },
+            }).then(response => {
+                response.json().then(resp => {
+                    this.user = resp.user
+                    localStorage.setItem("user", JSON.stringify(this.user))
+                })
+            })
+        },
 
         update_router(route) {
             this.router = route
             localStorage.setItem("route_state", route)
         },
 
+        go_to_page1() {
+            this.router = "edit_profile"
+        },
 
+        go_to_page2() {
+            this.router = "pers_acc"
+        },
+        go_to_page3() {
+            this.router = "all_courses"
+        },
+        go_to_page4() {
+            this.router = "all_courses"
+        },
+
+
+        open_course(id){
+            let course = this.courses.find(el => el.id == id)
+            this.opened_section = course.sections.find(el=>el.id = 1)
+            this.update_router("courses_el")
+         }
     },
 
 
+    created(){
+        if (localStorage.getItem("token")){
+            this.update_user()
+            this.get_courses()
+        }
+    }
+
+
 });
+

@@ -433,7 +433,7 @@ li { white-space: nowrap; }
     border-radius: 10px;
     border: solid 2px #DFE0EB;
     padding: 20px 32px;
-    height: 380px;
+    height: 480px;
 }
 
 .courses_el_nav h2 {
@@ -534,7 +534,7 @@ li { white-space: nowrap; }
 .profile_date {
     margin-top: 80px;
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: space-between;
     border-radius: 8px;
     border: #DFE0EB solid 2px;
@@ -567,6 +567,7 @@ li { white-space: nowrap; }
 
 .profile_input img {
     width: 70px;
+    margin-bottom: -10px;
 }
 
 .profile_date button {
