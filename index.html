@@ -480,6 +480,56 @@
         </div>
     </div>
 
+
+    <div class="block" v-if="router=='all_courses'">
+        <div class="pers_acc_courses_page">
+            <div class="pers_acc_inf">
+                <img class="pers_acc_logo" src="img/logo.png" alt="">
+                <nav class="pers_acc_nav">
+                    <li class="pers_acc_li">
+                        <img src="img/settings.png" alt="">
+                        <h3>Мои данные</h3>
+                    </li>
+                    <li class="pers_acc_li">
+                        <img src="img/my_courses.png" alt="">
+                        <h3>Мои курсы</h3>
+                    </li>
+                    <li class="pers_acc_li">
+                        <img src="img/item_change.png" alt="">
+                        <h3>Обмен баллов</h3>
+                    </li>
+                </nav>
+
+            </div>
+            <div class="pers_acc_courses">
+                <div class="pers_acc_name">
+                    <h1>Все курсы</h1>
+                    <div class="pers_acc_data">
+                        <div class="email">maratmurzaev11@mail.ru</div>
+                        <img src="img/profile_icon.png" alt="">
+                    </div>
+                </div>
+                <div class="all_courses_inf">
+                    <div class="all_courses">
+                        <h3>Акция, акция, акция</h3>
+                        <p style="color: #9FA2B4; border: none; width: 85%; font-size: 15px">Только сегодня при покупке одного курса второй вы получаете в подарок</p>
+                        <p>Курс номер 1</p>
+                        <p>Курс номер 2</p>
+                        <p>Курс номер 3</p>
+                        <p>Курс номер 4</p>
+                        <p>Курс номер 5</p>
+                    </div>
+                    <div class="course_cost">
+                        <h3>Итоговая стоимость</h3>
+                        <h2>6000Р</h2>
+                        <button>Оплатить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
         <div class="block" v-if="router=='add_course'">
             <form class="add_course" v-on:submit.prevent="do_add_course" action="">
                 <input type="text" name="course_name" placeholder="Название курса">

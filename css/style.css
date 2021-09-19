@@ -646,3 +646,60 @@ li { white-space: nowrap; }
     padding: 8px 20px;
     height: 32px;
 }
+
+.all_courses_inf {
+    margin-top: 80px;
+    display: flex;
+}
+.all_courses {
+    padding: 20px 0 10px 0;
+    border-radius: 8px;
+    border: #C7C7C7 solid 2px;
+    width: 400px;
+}
+.all_courses h3 {
+    padding: 0 30px;
+    color: green;
+    font-size: 24px;
+}
+
+.all_courses p {
+    font-size: 20px;
+    width: 100%;
+    padding: 10px 30px;
+    border-top: #C7C7C7 solid 2px;
+
+}
+
+.course_cost {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: #C7C7C7 solid 2px;
+    width: 400px;
+    padding: 20px 0;
+    margin-left: 50px;
+    height: 200px;
+}
+
+h3  {
+    font-size: 24px;
+    color: #9FA2B4;
+}
+
+h2 {
+    font-size: 40px;
+    margin: 14px 0;
+}
+
+.course_cost button {
+    font-family: "TTNorms-Medium", sans-serif;
+    color: #FFFFFF;
+    border-radius: 90px;
+    border: none;
+    background: green;
+    padding: 8px 20px;
+    height: 32px;
+}
