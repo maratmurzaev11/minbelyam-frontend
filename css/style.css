@@ -329,7 +329,7 @@ li { white-space: nowrap; }
 
 .pers_acc_logo {
     width: 200px;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
 .pers_acc_inf li {
@@ -378,6 +378,7 @@ li { white-space: nowrap; }
     border: #DFE0EB solid 2px;
     margin-right: 30px;
     padding: 20px 130px 20px 30px;
+    max-width: 300px;
     color: #9FA2B4;
 }
 
@@ -432,6 +433,7 @@ li { white-space: nowrap; }
     border-radius: 10px;
     border: solid 2px #DFE0EB;
     padding: 20px 32px;
+    height: 380px;
 }
 
 .courses_el_nav h2 {
@@ -457,4 +459,190 @@ li { white-space: nowrap; }
 .courses_el_nav li img {
     width: 20px;
     margin-right: 20px;
+}
+
+.add_course {
+    margin-left: 50px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.courses_task {
+    padding: 50px 0;
+    width: 800px;
+}
+
+.test_options {
+        margin-top: 50px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.option label {
+    margin-left: 10px;
+    margin-top: -6px;
+    font-size: 25px;
+}
+
+
+/*.custom-checkbox {*/
+/*    position: absolute;*/
+/*    z-index: -1;*/
+/*    opacity: 0;*/
+/*}*/
+
+/*.custom-checkbox+label {*/
+/*    display: inline-flex;*/
+/*    align-items: center;*/
+/*    user-select: none;*/
+/*}*/
+/*.custom-checkbox+label::before {*/
+/*    content: '';*/
+/*    display: inline-block;*/
+/*    width: 1em;*/
+/*    height: 1em;*/
+/*    flex-shrink: 0;*/
+/*    flex-grow: 0;*/
+/*    border: 1px solid #adb5bd;*/
+/*    border-radius: 0.25em;*/
+/*    margin-right: 0.5em;*/
+/*    background-repeat: no-repeat;*/
+/*    background-position: center center;*/
+/*    background-size: 50% 50%;*/
+/*}*/
+
+.test_options button {
+    margin-top: 15px;
+    background: green;
+    border: none;
+    font-size: 18px;
+    border-radius: 90px;
+    color: #FFFFFF;
+    padding: 10px 45px;
+}
+
+.edit_profile {
+    width: 80%;
+    padding: 50px 0;
+}
+
+.profile_date {
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px;
+    border: #DFE0EB solid 2px;
+    padding: 20px 40px;
+}
+
+#edit_user_photo {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.profile_input {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile_input input {
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: #DFE0EB solid 2px;
+}
+
+.profile_input label {
+    font-size: 17px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+.profile_input img {
+    width: 70px;
+}
+
+.profile_date button {
+    margin-top: 15px;
+    margin-left: 50px;
+    background: green;
+    border: none;
+    font-size: 18px;
+    border-radius: 90px;
+    color: #FFFFFF;
+    padding: 10px 45px;
+}
+
+.user_courses {
+    display: flex;
+    margin-top: 50px;
+}
+
+.user_courses_osn_el {
+    flex-direction: column;
+    border-radius: 8px;
+    border: #DFE0EB solid 2px;
+    margin-right: 30px;
+    padding: 20px 130px 20px 30px;
+    max-width: 300px;
+    color: #9FA2B4;
+}
+
+.user_balance {
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+    border: #DFE0EB solid 2px;
+    margin-right: 30px;
+    padding: 20px 30px 20px 30px;
+    max-width: 500px;
+    color: #9FA2B4;
+}
+
+.user_courses_osn_el h2 {
+    color: #000000;
+    margin: 15px 0;
+    font-size: 40px;
+}
+
+/*.user_balance_change {*/
+/*}*/
+
+.user_balance h2 {
+    color: #000000;
+    font-size: 40px;
+}
+
+.user_courses_osn_el button, .user_balance button {
+    font-family: "TTNorms-Medium", sans-serif;
+    color: #FFFFFF;
+    border-radius: 90px;
+    border: none;
+    background: green;
+    padding: 8px 20px;
+}
+
+.user_balance_change {
+    width: 80%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.user_balance button {
+    font-family: "TTNorms-Medium", sans-serif;
+    color: #FFFFFF;
+    border-radius: 90px;
+    border: none;
+    background: green;
+    padding: 8px 20px;
+    height: 32px;
 }
